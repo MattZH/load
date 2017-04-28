@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery-1.7.2.min.js"></script>
+    <style>
+        #box {
+            height: 210px;
+            border: 1px solid #ff0000;
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="box">
+
+    </ul>
+    <script>
+        var j=1
+        for (var i = 1; i < 51; i++,j++) {
+            $('#box').append("<li>" + j + "</li>");
+        }
+        var appendLi = function() {
+            for (var i = 1; i < 21; i++,j++) {
+                $('#box').append("<li>" + j + "</li>");
+            }
+        };
+        // $("#box").scroll(function(){
+        //   alert("ScrollTOP:"+$(this).scrollTop()+"Height:"+$("#box").height());
+        // });
+        $("#box").scroll(function() {
+            var sm = Number($(this).scrollTop() + $(this).get(0).offsetHeight)+10;
+            var dsm = $(this).get(0).scrollHeight;//可见部分加不可见部分
+            if (sm >= dsm) {
+                appendLi();
+            }
+        });
+    </script>
+</body>
+
+</html>
